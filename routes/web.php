@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,18 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('/user',[UserController::class, 'index']);
+
+Route::permanentRedirect('/here', '/kk');
+Route::permanentRedirect('/oops', '/user');
+// Route::get('/profile',function(){
+//     return view('profile')
+//     ->with('name','Fasa')
+//     ->with('occations','King');
+// });
+
+
+Route::resource("profile",'App\Http\Controllers\ProfileController');
+Route::resource("products",'App\Http\Controllers\ProductController');
